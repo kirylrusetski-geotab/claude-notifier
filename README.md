@@ -16,6 +16,10 @@ Delivers Notification Center banners for permission prompts, task completions, a
 - **First-run wizard** — seven-step onboarding that configures terminal detection, sounds, and notification types.
 - **Sound control** — per-type sounds with a global mute toggle.
 
+<img width="821" height="552" alt="Screenshot 2026-05-26 at 4 14 15 PM" src="https://github.com/user-attachments/assets/78a19297-1d49-46e7-97b5-3086e18fb374" />
+<img width="376" height="217" alt="Screenshot 2026-05-26 at 4 13 05 PM" src="https://github.com/user-attachments/assets/94d0e711-d3ea-4df9-b9e6-a8c050951ca0" />
+
+
 ## Requirements
 
 - macOS 13 Ventura or later
