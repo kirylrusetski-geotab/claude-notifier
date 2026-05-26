@@ -39,18 +39,28 @@ The build script compiles all Swift source files and signs the app bundle in pla
 
 ### 2. Wire up Claude Code hooks
 
-Add the following to your `~/.claude/settings.json` (create the file if it doesn't exist):
+Merge the following into your `~/.claude/settings.json` (create the file if it doesn't exist, or add the `hooks` key alongside any existing keys):
 
 ```json
 {
   "hooks": {
     "Notification": [
       {
-        "matcher": "",
+        "matcher": "permission_prompt|idle_prompt",
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/scripts/claude-notify-macos.sh"
+            "command": "bash ~/.claude/scripts/claude-notify-macos.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/scripts/claude-notify-macos.sh"
           }
         ]
       }
@@ -58,6 +68,8 @@ Add the following to your `~/.claude/settings.json` (create the file if it doesn
   }
 }
 ```
+
+> **Note:** If `settings.json` already exists, merge the `hooks` block into it rather than replacing the file — other keys like `model` or `statusLine` should be preserved.
 
 ### 3. Run the setup wizard
 
