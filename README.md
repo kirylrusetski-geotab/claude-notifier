@@ -2,7 +2,9 @@
 
 <img width="512" height="512" alt="AppIcon" src="https://github.com/user-attachments/assets/3b74c8ec-34cf-4bc5-9a51-9452d2e10144" />
 
-A native macOS notification tool for [Claude Code](https://claude.ai/code). Delivers Notification Center banners for permission prompts, task completions, and questions — with action buttons you can click directly from the banner.
+A native macOS notification tool for [Claude Code](https://claude.ai/code). 
+
+Delivers Notification Center banners for permission prompts, task completions, and questions with action buttons you can click directly from the banner.
 
 ## Features
 
