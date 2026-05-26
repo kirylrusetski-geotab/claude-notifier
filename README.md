@@ -111,6 +111,10 @@ Adds a flame icon to the menu bar with quick toggles for each notification type 
 
 Prints the clicked action label (or `@TIMEOUT`, `@DISMISSED`, `@CONTENTCLICKED`) to stdout.
 
+## License
+
+GPL v3 — see [LICENSE](LICENSE).
+
 ## Building
 
 ```bash
