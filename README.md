@@ -32,6 +32,8 @@ xcode-select --install
 
 ### 1. Clone and build
 
+The source code is plain Swift files with no dependencies. The build script compiles them into a native macOS app bundle (`claude-notifier.app`) using the Swift compiler that ships with Xcode Command Line Tools, then signs it so macOS will run it without Gatekeeper warnings.
+
 ```bash
 git clone https://github.com/kirylrusetski-geotab/claude-notifier.git ~/.claude/scripts
 cd ~/.claude/scripts
@@ -39,9 +41,14 @@ chmod +x build-claude-notifier.sh
 ./build-claude-notifier.sh
 ```
 
-The build script compiles all Swift source files and signs the app bundle in place at `claude-notifier.app`.
+The app bundle is created at `~/.claude/scripts/claude-notifier.app`. You don't need to move it anywhere — the hook script references it by that path.
 
 ### 2. Wire up Claude Code hooks
+
+Claude Code has a hooks system that runs shell commands in response to events. This step tells Claude Code to call the notifier's shell script on two events:
+
+- **`Notification`** (matched to `permission_prompt|idle_prompt`) — fires when Claude is waiting for your input, either at a permission prompt or because it has gone idle. This is what triggers the interactive banners with Allow / Deny / Snooze buttons.
+- **`Stop`** — fires when a Claude task finishes. This is what triggers the task-complete notification so you know to come back.
 
 Merge the following into your `~/.claude/settings.json` (create the file if it doesn't exist, or add the `hooks` key alongside any existing keys):
 
@@ -77,13 +84,19 @@ Merge the following into your `~/.claude/settings.json` (create the file if it d
 
 ### 3. Run the setup wizard
 
+The app needs one-time configuration before it can deliver notifications. The wizard covers:
+
+- **Terminal detection** — the notifier injects keystrokes into your terminal after you click Allow or Deny on a permission prompt. It needs to know which terminal app you use (Terminal.app, iTerm2, Ghostty, etc.) so it can target the right window.
+- **Menu bar app** — optionally starts a background process that adds a flame icon to your menu bar with quick toggles for each notification type.
+- **Notification permission** — macOS requires explicit permission before any app can show Notification Center banners. The wizard requests this and confirms it was granted.
+- **Sounds** — choose whether notifications play a sound and which one.
+- **Notification types** — enable or disable permission prompts, task-complete, and question notifications individually.
+
 Double-click `claude-notifier.app` or run:
 
 ```bash
 ~/.claude/scripts/claude-notifier.app/Contents/MacOS/claude-notifier
 ```
-
-The wizard walks you through terminal detection, menu bar setup, notification permissions, sounds, and notification types.
 
 ## Usage
 
