@@ -127,7 +127,3 @@ Source files:
 | `claude-notifier-onboarding.swift` | First-run wizard and splash screen |
 | `claude-notify-macos.sh` | Shell hook called by Claude Code |
 | `build-claude-notifier.sh` | Build script |
-
-## License
-
-MIT
