@@ -29,7 +29,7 @@ xcode-select --install
 ### 1. Clone and build
 
 ```bash
-git clone https://github.com/kirylrusetski/claude-notifier.git ~/.claude/scripts
+git clone https://github.com/kirylrusetski-geotab/claude-notifier.git ~/.claude/scripts
 cd ~/.claude/scripts
 chmod +x build-claude-notifier.sh
 ./build-claude-notifier.sh
